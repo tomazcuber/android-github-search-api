@@ -7,7 +7,7 @@ import br.com.githubapi.network.NetworkResult
 import br.com.githubsearch.data.model.User
 
 class UsersRemoteDataSource {
-    private lateinit var githubClient: GithubClient
+    private var githubClient: GithubClient
 
     init {
         GitHubApiInitializer.initialize()

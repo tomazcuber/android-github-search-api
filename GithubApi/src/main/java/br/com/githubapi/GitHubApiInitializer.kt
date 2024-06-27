@@ -6,6 +6,8 @@ import br.com.githubapi.di.ApiModule
 import br.com.githubapi.di.components.DaggerGithubApiComponent
 import br.com.githubapi.di.components.GithubApiComponent
 
+
+//TODO: Add OAuth authentication to the Github API
 object GitHubApiInitializer {
     private lateinit var component: GithubApiComponent
 
