@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Github Search</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="username_text_view_hint">GitHub username</string>
+    <string name="no_user_found">No user found</string>
+    <string name="view_repositories">View repositories</string>
+    <string name="public_repositories">%1$s public repositories</string>
+</resources>
