@@ -30,6 +30,7 @@ class ApiModule {
     fun provideGithubApiService(retrofit: Retrofit): GithubApiService {
         return retrofit.create(GithubApiService::class.java)
     }
+
     @Provides
     @Singleton
     fun provideGithubApiHelper(githubApiService: GithubApiService): GithubApiHelper{
