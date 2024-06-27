@@ -1,2 +1,3 @@
-# android-github-search-api
-Simple wrapper for the Github API as an Android library, written in Kotlin.
+# android-github-search
+Simple wrapper for the GitHub API as an Android library, written in Kotlin.
+A sample app with basic search functionality is provided as a usage example.
