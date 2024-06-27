@@ -14,6 +14,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import br.com.githubsearch.R
+import br.com.githubsearch.data.model.User
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.progressindicator.CircularProgressIndicator
@@ -27,7 +28,7 @@ class SearchUserFragment : Fragment() {
         fun newInstance() = SearchUserFragment()
     }
 
-    val viewModel: SearchUserViewModel by activityViewModels<SearchUserViewModel>()
+    private val viewModel: SearchUserViewModel by activityViewModels<SearchUserViewModel>()
     private lateinit var searchUserTextEdit: MaterialAutoCompleteTextView
     private lateinit var userCard: MaterialCardView
     private lateinit var usernameTextView: MaterialTextView
@@ -44,7 +45,7 @@ class SearchUserFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        var root = inflater.inflate(R.layout.fragment_search_user, container, false)
+        val root = inflater.inflate(R.layout.fragment_search_user, container, false)
         setupView(root)
         observeViewModel()
         return root
@@ -88,17 +89,7 @@ class SearchUserFragment : Fragment() {
                     ).show()
                     return@postDelayed
                 }
-                usernameTextView.text = user.username
-                totalReposTextView.text =
-                    getString(R.string.public_repositories, user.totalPublicRepos.toString())
-                if (user.totalPublicRepos > 0) {
-                    listReposButton.isEnabled = true
-                    listReposButton.setOnClickListener {
-                        Toast.makeText(requireContext(), "List Repos - WIP", Toast.LENGTH_SHORT)
-                            .show()
-                    }
-                }
-                userCard.visibility = View.VISIBLE
+                buildUserCard(user)
             }, 2000) // delay for 2 seconds
         }
     }
@@ -110,4 +101,16 @@ class SearchUserFragment : Fragment() {
         viewModel.searchUserByUsername(user)
     }
 
+    private fun buildUserCard(user: User) {
+        usernameTextView.text = user.username
+        totalReposTextView.text =
+            getString(R.string.public_repositories, user.totalPublicRepos.toString())
+        if (user.totalPublicRepos > 0) {
+            listReposButton.isEnabled = true
+            listReposButton.setOnClickListener {
+                Toast.makeText(requireContext(), "List Repos - WIP", Toast.LENGTH_SHORT).show()
+            }
+        }
+        userCard.visibility = View.VISIBLE
+    }
 }
