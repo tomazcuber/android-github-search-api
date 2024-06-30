@@ -6,5 +6,4 @@ import br.com.githubapi.network.NetworkResult
 
 interface GetUserResponseRepository {
     suspend fun searchUser(username: String): NetworkResult<GetUserResponse>
-    suspend fun listUsersRepositories(username: String): NetworkResult<List<RepositoryResponse>>
 }

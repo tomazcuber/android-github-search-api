@@ -13,8 +13,4 @@ class GetUserResponseRepositoryImpl @Inject constructor(
     override suspend fun searchUser(username: String): NetworkResult<GetUserResponse> {
         return githubApiHelper.getUser(username)
     }
-
-    override suspend fun listUsersRepositories(username: String): NetworkResult<List<RepositoryResponse>> {
-        return githubApiHelper.getRepos(username)
-    }
 }

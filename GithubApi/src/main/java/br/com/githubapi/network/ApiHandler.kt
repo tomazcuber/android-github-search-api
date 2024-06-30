@@ -1,5 +1,6 @@
 package br.com.githubapi.network
 
+import android.util.Log
 import retrofit2.HttpException
 import retrofit2.Response
 
@@ -9,6 +10,7 @@ interface ApiHandler {
     ): NetworkResult<T> {
         return try {
             val response = execute()
+            Log.d("GH_API", "Response Header: \n${response.headers()}")
             val body = response.body()
             if (response.isSuccessful && body != null) {
                 NetworkResult.Success(body)

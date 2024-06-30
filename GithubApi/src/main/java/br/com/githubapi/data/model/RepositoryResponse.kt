@@ -2,6 +2,7 @@ package br.com.githubapi.data.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import retrofit2.http.Url
 
 //TODO: Add missing fields that are not 'required' in the API response
 @Serializable
@@ -17,12 +18,14 @@ data class RepositoryResponse(
     @SerialName("contents_url") val contentsUrl: String,
     @SerialName("contributors_url") val contributorsUrl: String,
     @SerialName("deployments_url") val deploymentsUrl: String,
+    @SerialName("description") val description: String,
+    @SerialName("downloads_url") val downloadsUrl: String,
     @SerialName("events_url") val eventsUrl: String,
     @SerialName("fork") val fork: Boolean,
     @SerialName("forks_url") val forksUrl: String,
     @SerialName("forks_count") val forksCount: Int,
     @SerialName("full_name") val fullName: String,
-    @SerialName("owner") val owner: GetUserResponse,
+    @SerialName("owner") val owner: RepositoryOwner,
     @SerialName("git_commits_url") val gitCommitsUrl: String,
     @SerialName("git_refs_url") val gitRefsUrl: String,
     @SerialName("git_tags_url") val gitTagsUrl: String,
@@ -51,4 +54,26 @@ data class RepositoryResponse(
     @SerialName("teams_url") val teamsUrl: String,
     @SerialName("trees_url") val treesUrl: String,
     @SerialName("url") val url: String,
+)
+
+@Serializable
+data class RepositoryOwner(
+    @SerialName("avatar_url") val avatarUrl: String,
+    @SerialName("events_url") val eventsUrl: String,
+    @SerialName("followers_url") val followersUrl: String,
+    @SerialName("following_url") val followingUrl: String,
+    @SerialName("gists_url") val gistsUrl: String,
+    @SerialName("gravatar_id") val gravatarId: String,
+    @SerialName("html_url") val htmlUrl: String,
+    @SerialName("id") val id: Long,
+    @SerialName("node_id") val nodeId: String,
+    @SerialName("login") val login: String,
+    @SerialName("organizations_url") val organizationsUrl: String,
+    @SerialName("received_events_url") val receivedEventsUrl: String,
+    @SerialName("repos_url") val reposUrl: String,
+    @SerialName("site_admin") val siteAdmin: Boolean,
+    @SerialName("starred_url") val starredUrl : String,
+    @SerialName("subscriptions_url") val subscriptionsUrl: String,
+    @SerialName("type") val type: String,
+    @SerialName("url") val url: String
 )

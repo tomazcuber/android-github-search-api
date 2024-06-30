@@ -11,10 +11,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.ImageButton
-import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import br.com.githubsearch.R
-import br.com.githubsearch.data.model.User
+import br.com.githubsearch.data.model.entity.User
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.progressindicator.CircularProgressIndicator
@@ -36,6 +37,7 @@ class SearchUserFragment : Fragment() {
     private lateinit var searchUserButton: ImageButton
     private lateinit var userSearchProgressIndicator: CircularProgressIndicator
     private lateinit var listReposButton: MaterialButton
+    private lateinit var root: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +47,7 @@ class SearchUserFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val root = inflater.inflate(R.layout.fragment_search_user, container, false)
+        root = inflater.inflate(R.layout.fragment_search_user, container, false)
         setupView(root)
         observeViewModel()
         return root
@@ -108,7 +110,12 @@ class SearchUserFragment : Fragment() {
         if (user.totalPublicRepos > 0) {
             listReposButton.isEnabled = true
             listReposButton.setOnClickListener {
-                Toast.makeText(requireContext(), "List Repos - WIP", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(requireContext(), "List Repos - WIP", Toast.LENGTH_SHORT).show()
+                val action = R.id.action_searchUserFragment_to_userRepositoriesFragment
+                root.findNavController().navigate(action, Bundle().apply {
+                    putString("username", user.username)
+                    putString("avatarUrl", user.avatarURL)
+                })
             }
         }
         userCard.visibility = View.VISIBLE

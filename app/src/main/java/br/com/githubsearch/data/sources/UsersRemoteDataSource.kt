@@ -1,21 +1,15 @@
 package br.com.githubsearch.data.sources
 
-import br.com.githubapi.GitHubApiInitializer
 import br.com.githubapi.client.GithubClient
 import br.com.githubapi.data.model.GetUserResponse
 import br.com.githubapi.network.NetworkResult
-import br.com.githubsearch.data.model.User
+import br.com.githubsearch.data.model.entity.Repository
+import br.com.githubsearch.data.model.entity.User
+import javax.inject.Inject
 
-class UsersRemoteDataSource {
-    private var githubClient: GithubClient
-
-    init {
-        GitHubApiInitializer.initialize()
-        githubClient = GitHubApiInitializer.githubClient
-    }
-
-    suspend fun searchUser(username: String) : User? {
-        return when(val clientResponse = githubClient.searchUser(username)) {
+class UsersRemoteDataSource @Inject constructor(private val githubClient: GithubClient) {
+    suspend fun searchUser(username: String): User? {
+        return when (val clientResponse = githubClient.searchUser(username)) {
             is NetworkResult.Success -> {
                 convertToUser(clientResponse.data)
             }
@@ -29,6 +23,33 @@ class UsersRemoteDataSource {
             }
         }
     }
+
+    suspend fun listUserRepositories(user: User): List<Repository> {
+        return when (val clientResponse = githubClient.searchUserRepositories(user.username)) {
+            is NetworkResult.Success -> {
+                clientResponse.data.map {
+                    Repository(
+                        id = it.id,
+                        name = it.name,
+                        description = it.description,
+                        stars = it.stargazersCount,
+                        forks = it.forksCount,
+                        userOwnerId = user.id
+                    )
+                }
+            }
+
+            is NetworkResult.Error -> {
+                emptyList()
+            }
+
+            is NetworkResult.Exception -> {
+                throw Exception(clientResponse.exception)
+            }
+        }
+    }
+
+
 
     private fun convertToUser(userResponse: GetUserResponse): User {
         return User(

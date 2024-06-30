@@ -2,11 +2,14 @@ package br.com.githubapi.service
 
 import br.com.githubapi.data.model.GetUserResponse
 import br.com.githubapi.data.model.RepositoryResponse
+import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.Path
 
 interface GithubApiService {
+
     @GET("users/{username}")
     suspend fun getUser(@Path("username") username: String): Response<GetUserResponse>
 
@@ -17,4 +20,5 @@ interface GithubApiService {
     suspend fun listRepositoryTags(
         @Path("owner") username: String, @Path("repo") repositoryName: String
     ): Response<List<String>>
+
 }

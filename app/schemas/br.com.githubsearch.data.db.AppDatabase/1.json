@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "6a5e575f6f90754641582b1af9767f89",
+    "identityHash": "9f3ce7d0989dffa8f3c5bdceb646a5be",
     "entities": [
       {
         "tableName": "User",
@@ -68,7 +68,7 @@
       },
       {
         "tableName": "Repository",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `userOwnerId` INTEGER NOT NULL, `name` TEXT NOT NULL, `description` TEXT, `language` TEXT, `stars` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `userOwnerId` INTEGER NOT NULL, `name` TEXT NOT NULL, `description` TEXT, `stars` INTEGER NOT NULL, `forks` INTEGER NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -95,14 +95,14 @@
             "notNull": false
           },
           {
-            "fieldPath": "language",
-            "columnName": "language",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
             "fieldPath": "stars",
             "columnName": "stars",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "forks",
+            "columnName": "forks",
             "affinity": "INTEGER",
             "notNull": true
           }
@@ -120,7 +120,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6a5e575f6f90754641582b1af9767f89')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9f3ce7d0989dffa8f3c5bdceb646a5be')"
     ]
   }
 }

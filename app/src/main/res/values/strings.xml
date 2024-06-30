@@ -5,4 +5,7 @@
     <string name="no_user_found">No user found</string>
     <string name="view_repositories">View repositories</string>
     <string name="public_repositories">%1$s public repositories</string>
+    <string name="stars_descriptor">%1$s stars</string>
+    <string name="forks_descriptor">%1$s forks</string>
+    <string name="user_repositories_title">%1$s\'s repositories:</string>
 </resources>

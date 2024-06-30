@@ -1,4 +1,4 @@
-package br.com.githubsearch.data.model
+package br.com.githubsearch.data.model.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -9,6 +9,7 @@ data class Repository(
     val userOwnerId: Long,
     val name: String,
     val description: String?,
-    val language: String?,
-    val stars: Int
+//    val language: String?,
+    val stars: Int,
+    val forks: Int
 )

@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class RepositoryTag(
+data class RepositoryTagsResponse(
     @SerialName("name") val name: String,
     @SerialName("commit") val commit: Commit,
     @SerialName("zipball_url") val zipballUrl: String,
