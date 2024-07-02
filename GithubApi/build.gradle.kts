@@ -103,23 +103,32 @@ tasks.register<Jar>("androidSourcesJar") {
     }
 }
 
+tasks.withType<org.jetbrains.dokka.gradle.DokkaTask>().configureEach {
+    moduleName.set(project.name)
+    moduleVersion.set(project.version.toString())
+    outputDirectory.set(projectDir.resolve("docs/$name"))
+}
 
 tasks.register<Jar>("dokkaHtmlJar") {
     dependsOn(tasks.dokkaHtml)
-    from(tasks.dokkaHtml.flatMap { it.outputDirectory })
+    from(tasks.dokkaHtml.flatMap {
+        it.outputDirectory
+    })
     archiveClassifier.set("html-docs")
 }
 
-tasks.register<Jar>("dokkaJavadocJar") {
-    dependsOn(tasks.dokkaJavadoc)
-    from(tasks.dokkaJavadoc.flatMap { it.outputDirectory })
-    archiveClassifier.set("javadoc")
+tasks.register<Jar>("dokkaJavadocsJar") {
+    dependsOn(tasks.dokkaHtml)
+    from(tasks.dokkaHtml.flatMap {
+        it.outputDirectory
+    })
+    archiveClassifier.set("html-docs")
 }
 
 artifacts {
     add("archives", tasks.named("androidSourcesJar"))
     add("archives", tasks.named("dokkaHtmlJar"))
-    add("archives", tasks.named("dokkaJavadocJar"))
+    add("archives", tasks.named("dokkaJavadocsJar"))
 }
 
 project.ext.set("isReleaseVersion", !version.toString().endsWith("SNAPSHOT"))
@@ -138,7 +147,7 @@ afterEvaluate {
 
                 artifact(tasks["androidSourcesJar"])
                 artifact(tasks["dokkaHtmlJar"])
-                artifact(tasks["dokkaJavadocJar"])
+                artifact(tasks["dokkaJavadocsJar"])
 
                 pom {
                     name.set("Android Github API")

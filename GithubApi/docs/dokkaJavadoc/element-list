@@ -1,0 +1,15 @@
+$dokka.format:javadoc-v1
+$dokka.linkExtension:html
+$dokka.location:br.com.tomazcuber.githubapi.network/NetworkResult.Error///PointingToDeclaration/br/com/tomazcuber/githubapi/network/NetworkResult.Error.html
+$dokka.location:br.com.tomazcuber.githubapi.network/NetworkResult.Exception///PointingToDeclaration/br/com/tomazcuber/githubapi/network/NetworkResult.Exception.html
+$dokka.location:br.com.tomazcuber.githubapi.network/NetworkResult.Success///PointingToDeclaration/br/com/tomazcuber/githubapi/network/NetworkResult.Success.html
+br.com.tomazcuber.githubapi
+br.com.tomazcuber.githubapi.client
+br.com.tomazcuber.githubapi.data.model
+br.com.tomazcuber.githubapi.data.repository
+br.com.tomazcuber.githubapi.di
+br.com.tomazcuber.githubapi.di.components
+br.com.tomazcuber.githubapi.network
+br.com.tomazcuber.githubapi.service
+br.com.tomazcuber.githubapi.util
+

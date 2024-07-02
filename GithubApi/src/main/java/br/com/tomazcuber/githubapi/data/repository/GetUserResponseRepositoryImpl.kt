@@ -1,9 +1,7 @@
 package br.com.tomazcuber.githubapi.data.repository
 
 import br.com.tomazcuber.githubapi.data.model.GetUserResponse
-import br.com.tomazcuber.githubapi.data.model.RepositoryResponse
 import br.com.tomazcuber.githubapi.network.GithubApiHelper
-import br.com.tomazcuber.githubapi.service.CacheService
 import br.com.tomazcuber.githubapi.network.NetworkResult
 import javax.inject.Inject
 
