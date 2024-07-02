@@ -1,31 +1,22 @@
 package br.com.githubsearch.data.repository
 
 import br.com.githubsearch.data.model.entity.User
-import br.com.githubsearch.data.model.relation.UserWithRepositories
-import br.com.githubsearch.data.sources.UsersLocalDataSource
-import br.com.githubsearch.data.sources.UsersRemoteDataSource
+import br.com.githubsearch.data.sources.users.UsersLocalDataSource
+import br.com.githubsearch.data.sources.users.UsersRemoteDataSource
 
 class UsersRepository(
     private val localDataSource: UsersLocalDataSource,
     private val remoteDataSource: UsersRemoteDataSource
 ) {
-    fun getAllSavedUsers() = localDataSource.getAllUsers()
-
-    suspend fun searchUser(username: String) : User? {
-        val userResult = remoteDataSource.searchUser(username)
-        if(userResult != null) {
-            localDataSource.saveUser(userResult)
+    suspend fun getUser(username: String): User? {
+//        var user = localDataSource.getUser(username)
+//        if (user != null) {
+//            return user
+//        }
+        val user = remoteDataSource.searchUser(username)
+        if (user != null) {
+            localDataSource.saveUser(user)
         }
-        return userResult
+        return user
     }
-
-    suspend fun listUserRepositories(username: String): UserWithRepositories {
-        val user = searchUser(username) ?: throw Exception("User not found")
-        return UserWithRepositories(
-            user = user,
-            repositories = remoteDataSource.listUserRepositories(user)
-        )
-    }
-
-//    suspend fun get
 }

@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "br.com.githubsearch"
+    namespace = "br.com.tomazcuber.githubsearch"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "br.com.githubsearch"
+        applicationId = "br.com.br.com.tomazcuber.githubsearch"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
@@ -52,8 +52,8 @@ android {
 dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.2")
     implementation("androidx.core:core-ktx:1.13.1")
-    implementation ("androidx.activity:activity-ktx:1.9.0")
-    implementation ("androidx.fragment:fragment-ktx:1.8.0")
+    implementation("androidx.activity:activity-ktx:1.9.0")
+    implementation("androidx.fragment:fragment-ktx:1.8.0")
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
@@ -71,7 +71,6 @@ dependencies {
 
     implementation(project(":GithubApi"))
 
-
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
 
@@ -82,6 +81,12 @@ dependencies {
     implementation("androidx.room:room-ktx:$room_version")
     testImplementation("androidx.room:room-testing:$room_version")
 
+    val paging_version = "3.3.0"
+    implementation("androidx.paging:paging-runtime:$paging_version")
+
+    val glide_version ="4.14.2"
+    implementation("com.github.bumptech.glide:glide:$glide_version")
+    kapt("com.github.bumptech.glide:compiler:$glide_version")
 }
 
 // Allow references to generated code

@@ -13,9 +13,8 @@ import android.view.inputmethod.EditorInfo
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import br.com.githubsearch.R
 import br.com.githubsearch.data.model.entity.User
+import br.com.tomazcuber.githubsearch.R
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.progressindicator.CircularProgressIndicator
@@ -110,7 +109,6 @@ class SearchUserFragment : Fragment() {
         if (user.totalPublicRepos > 0) {
             listReposButton.isEnabled = true
             listReposButton.setOnClickListener {
-//                Toast.makeText(requireContext(), "List Repos - WIP", Toast.LENGTH_SHORT).show()
                 val action = R.id.action_searchUserFragment_to_userRepositoriesFragment
                 root.findNavController().navigate(action, Bundle().apply {
                     putString("username", user.username)

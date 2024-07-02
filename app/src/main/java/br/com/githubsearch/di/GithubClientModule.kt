@@ -1,10 +1,12 @@
 package br.com.githubsearch.di
 
-import br.com.githubapi.GitHubApiInitializer
-import br.com.githubapi.client.GithubClient
+import android.content.Context
+import br.com.tomazcuber.githubapi.GitHubApiInitializer
+import br.com.tomazcuber.githubapi.client.GithubClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -13,8 +15,8 @@ import javax.inject.Singleton
 class GithubClientModule {
     @Provides
     @Singleton
-    fun provideGithubClient() : GithubClient {
-        GitHubApiInitializer.initialize()
+    fun provideGithubClient(@ApplicationContext context: Context) : GithubClient {
+        GitHubApiInitializer.initialize(context.cacheDir)
         return GitHubApiInitializer.githubClient
     }
 }

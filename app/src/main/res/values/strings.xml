@@ -8,4 +8,6 @@
     <string name="stars_descriptor">%1$s stars</string>
     <string name="forks_descriptor">%1$s forks</string>
     <string name="user_repositories_title">%1$s\'s repositories:</string>
+    <string name="git_commit_icon">Git Commit Icon</string>
+    <string name="repository_tags_title">%1$s tags</string>
 </resources>

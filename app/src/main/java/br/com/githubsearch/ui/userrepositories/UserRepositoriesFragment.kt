@@ -8,8 +8,9 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
-import br.com.githubsearch.R
-import br.com.githubsearch.adapter.UserRepositoriesAdapter
+import br.com.githubsearch.ui.adapter.UserRepositoriesAdapter
+import br.com.tomazcuber.githubsearch.R
+import com.bumptech.glide.Glide
 import com.google.android.material.textview.MaterialTextView
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -41,10 +42,14 @@ class UserRepositoriesFragment : Fragment() {
         val argUsername = arguments?.getString("username") ?: ""
         val argAvatarUrl = arguments?.getString("avatarUrl") ?: ""
         usernameTitleTextView.text = getString(R.string.user_repositories_title, argUsername)
-        viewModel.userWithRepositories.observe(viewLifecycleOwner) { userWithRepositories ->
-            userRepositoriesAdapter = UserRepositoriesAdapter(userWithRepositories.repositories)
+        viewModel.reposFromUser.observe(viewLifecycleOwner) { reposFromUser ->
+            userRepositoriesAdapter = UserRepositoriesAdapter(reposFromUser)
             userRepositoriesRecyclerView.adapter = userRepositoriesAdapter
         }
         viewModel.getUserWithRepositories(argUsername)
+        Glide.with(this)
+            .load(argAvatarUrl)
+            .circleCrop()
+            .into(userImageView)
     }
 }

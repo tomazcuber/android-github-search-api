@@ -4,8 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import br.com.githubsearch.R
-import br.com.githubsearch.ui.searchuser.SearchUserFragment
+import br.com.tomazcuber.githubsearch.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

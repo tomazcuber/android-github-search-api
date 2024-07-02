@@ -4,9 +4,12 @@ import androidx.room.Delete
 import androidx.room.Upsert
 
 interface BaseDao<T> {
+    @Upsert()
+    suspend fun upsert(vararg obj: T)
+
     @Upsert
-    fun upsert(vararg obj: T)
+    suspend fun upsert(obj: List<T>)
 
     @Delete
-    fun delete(vararg obj: T)
+    suspend fun delete(vararg obj: T)
 }
