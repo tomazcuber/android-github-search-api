@@ -18,6 +18,8 @@ For instructions on how to use the API please refer to the [Github API module's 
 - Model-View-ViewModel architecture
 - Local request data persistence with Room database
 - Dependency Injection using Hilt
+- Usage of RecyclerViews for showing variable data
+- Image exhibition with Glide
 
 ## Contributing
 Contributions are welcome! Feel free to fork the repository and submit pull requests.
