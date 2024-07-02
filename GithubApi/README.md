@@ -141,6 +141,9 @@ suspend fun listRepositoryTags(username: String, repositoryName: String) {
 
 4. **Exceptions**: For `Exception` results, an unexpected error occurred (like network failure), and the exception provides details on what went wrong.
 
+## Documentation
+The documentation for the GithubApi library can be found in https://tomazcuber.github.io/android-github-search/
+
 5. **Pagination Support**: If applicable, the `Success` type also contains methods to navigate through paginated results using the available link headers (`nextPage`, `previousPage`, `firstPage`, `lastPage`).
 
 By following these guidelines, you can effectively integrate and utilize the GitHub API in your Android applications, handling all possible network outcomes gracefully.
