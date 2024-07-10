@@ -10,7 +10,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "br.com.br.com.tomazcuber.githubsearch"
+        applicationId = "br.com.tomazcuber.githubsearch"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
